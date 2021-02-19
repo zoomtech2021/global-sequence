@@ -42,23 +42,25 @@ sequence号段初始化sql，可以指定每次拉取号段的步长，理论上
 
 ## <a name="6">代码接⼊</a>
 * 1、maven依赖
-#```
+
+```
 <dependency>
     <groupId>com.zhiyong.saas</groupId>
     <artifactId>global-sequence-starter</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
-#```  
+```  
 
 * 2、application.properties 添加如下配置
-#```
+
+```
 #dubbo默认配置
 dubbo.registry.protocol=zookeeper
 dubbo.registry.address=192.168.16.225:2181
 dubbo.provider.protocol.version=1.0.0
 #当前业务默认使用的sequence名称
 zhiyong.default.sequence.name=global_sequence
-#``` 
+``` 
 
 ## <a name="7">SQL初始化</a>
 执行项目根目录下的init.sql
@@ -79,7 +81,8 @@ zhiyong.default.sequence.name=global_sequence
 
 * 需要使用全局sequence的依赖方，pom依赖global-sequence-starter
     * 代码注入：
-    #```
+    
+    ```
     #注⼊sequenceId
     @Resource
     private SequenceId sequenceId;
@@ -88,7 +91,7 @@ zhiyong.default.sequence.name=global_sequence
     ②sequenceId.next(100);//从配置的默认sequence中批量获取100个sequenceId
     ③sequenceId.next("study");//从指定sequence中获取1个sequenceId
     ④sequenceId.next("study", 100);//从指定sequence中批量获取100个sequenceId
-    #```
+   ```
 
 ## <a name="9">平台作者</a>
 
